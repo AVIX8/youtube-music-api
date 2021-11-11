@@ -34,10 +34,10 @@ class YoutubeMusicApi {
             if (res.headers.hasOwnProperty('set-cookie')) {
                 if (res.headers['set-cookie'] instanceof Array) {
                     res.headers['set-cookie'].map(value => {
-                        this.cookies.setCookieSync(tough.Cookie.parse(value), res.config.baseURL)
+                        this.cookies.setCookieSync(tough.Cookie.parse(value.toString()), res.config.baseURL)
                     })
                 } else {
-                    this.cookies.setCookieSync(tough.Cookie.parse(res.headers['set-cookie']), res.config.baseURL)
+                    this.cookies.setCookieSync(tough.Cookie.parse(res.headers['set-cookie'].toString()), res.config.baseURL)
                 }
             }
             return res
